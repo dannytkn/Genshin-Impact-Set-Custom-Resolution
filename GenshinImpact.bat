@@ -23,7 +23,8 @@ echo  Genshin Impact    (width: %screenWidth% - height: %screenHeight%)
 echo ==================================================
 echo.
 echo  S. Set custom resolution
-echo  U. Use presets
+echo  U. Use presets (16:9)
+echo  I. Use presets pseudo ultra wide (21:9)
 echo.
 echo  L. Launch the game
 echo.
@@ -39,6 +40,10 @@ if /i "%i%" == "S" (
 if /i "%i%" == "U" (
 	set "i="
 	goto resolution_presets
+)
+if /i "%i%" == "I" (
+	set "i="
+	goto resolution_presets_pseudo_ultrawide
 )
 if /i "%i%" == "L" (
 	set "i="
@@ -125,6 +130,47 @@ if "%i%" == "8" (
 	set "i="
 	set "screenWidth=854"
 	set "screenHeight=480"
+	goto main
+)
+if "%i%" == "0" (
+	set "i="
+	goto main
+) else (
+	set "i="
+	goto resolution_presets
+)
+
+:resolution_presets_pseudo_ultrawide
+cls
+echo ==================================================
+echo  Genshin Impact    (width: %screenWidth% - height: %screenHeight%)
+echo ==================================================
+echo.
+echo   1. 2560 x 1097 (21:9)
+echo   2. 1920 x 820 (21:9)
+echo   3. 1600 x 685 (21:9)
+echo.
+echo   0. Back
+echo.
+echo ==================================================
+echo.
+set /p i=Input: 
+if "%i%" == "1" (
+	set "i="
+	set "screenWidth=2560"
+	set "screenHeight=1097"
+	goto main
+)
+if "%i%" == "2" (
+	set "i="
+	set "screenWidth=1920"
+	set "screenHeight=820"
+	goto main
+)
+if "%i%" == "3" (
+	set "i="
+	set "screenWidth=1600"
+	set "screenHeight=685"
 	goto main
 )
 if "%i%" == "0" (
